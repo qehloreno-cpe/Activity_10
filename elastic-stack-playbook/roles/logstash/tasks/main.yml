@@ -1,0 +1,18 @@
+# roles/logstash/tasks/main.yml
+- name: Install Logstash
+  apt:
+    name: logstash-{{ logstash_version }}
+    state: present
+  when: "'ubuntu' in inventory_hostname"
+
+- name: Install Logstash
+  yum:
+    name: logstash-{{ logstash_version }}
+    state: present
+  when: "'centos' in inventory_hostname"
+
+- name: Start and enable Logstash service
+  service:
+    name: logstash
+    state: started
+    enabled: yes

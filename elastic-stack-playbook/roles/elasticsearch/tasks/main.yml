@@ -1,0 +1,18 @@
+# roles/elasticsearch/tasks/main.yml
+- name: Install Elasticsearch
+  apt:
+    name: elasticsearch-{{ elasticsearch_version }}
+    state: present
+  when: "'ubuntu' in inventory_hostname"
+
+- name: Install Elasticsearch
+  yum:
+    name: elasticsearch-{{ elasticsearch_version }}
+    state: present
+  when: "'centos' in inventory_hostname"
+
+- name: Start and enable Elasticsearch service
+  service:
+    name: elasticsearch
+    state: started
+    enabled: yes

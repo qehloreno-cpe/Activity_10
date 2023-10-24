@@ -1,0 +1,2 @@
+# roles/elasticsearch/vars/main.yml
+elasticsearch_version: "7.15.0"

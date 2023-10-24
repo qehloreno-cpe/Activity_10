@@ -1,0 +1,10 @@
+# elastic-stack-install.yml
+---
+- name: Install and Configure Elastic Stack
+  hosts: ubuntu, centos
+  become: yes
+
+  roles:
+    - role: elasticsearch
+    - role: kibana
+    - role: logstash
